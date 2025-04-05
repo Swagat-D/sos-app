@@ -1,0 +1,626 @@
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+  background: #f0f0f0;
+  border-radius: 5px;
+}
+
+nav ul li {
+  padding: 15px 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* SOS Button Styles */
+.sos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.form-group {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.sos-button {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.sos-button:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+.sos-button:active {
+  transform: scale(0.95);
+}
+
+.sos-button.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.alert-success {
+  padding: 15px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 4px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.note {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Admin Panel Styles */
+.admin-panel {
+  padding: 20px;
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 992px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.map-container {
+  min-height: 400px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.alerts-container {
+  overflow: hidden;
+}
+
+.alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.alert-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.alert-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.alert-card.active {
+  border-left: 5px solid #f44336;
+}
+
+.alert-card.acknowledged {
+  border-left: 5px solid #FF9800;
+}
+
+.alert-card.resolved {
+  border-left: 5px solid #4CAF50;
+}
+
+.alert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.alert-header h3 {
+  margin: 0;
+}
+
+.date {
+  font-size: 12px;
+  color: #666;
+}
+
+.message {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.location-details {
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.map-btn {
+  background-color: #4285F4;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.status-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.status-label {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.status-btn {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.status-btn.acknowledge {
+  background-color: #FF9800;
+  color: white;
+}
+
+.status-btn.resolve {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Add these styles to your existing CSS file */
+
+/* Status message styling */
+.status-message {
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Delete button styling */
+.status-btn.delete {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.status-btn.delete:hover {
+  background-color: #c82333;
+}
+
+/* Improve alert card styling */
+.alert-card {
+  border-left: 4px solid #ccc;
+}
+
+.alert-card.active {
+  border-left-color: #dc3545;
+}
+
+.alert-card.acknowledged {
+  border-left-color: #ffc107;
+}
+
+.alert-card.resolved {
+  border-left-color: #28a745;
+}
+
+/* Add these styles to your existing CSS file */
+
+/* Delete confirmation modal */
+.delete-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.delete-modal {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.delete-modal h3 {
+  margin-top: 0;
+  color: #dc3545;
+}
+
+.delete-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.cancel-btn {
+  padding: 8px 16px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.confirm-delete-btn {
+  padding: 8px 16px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+.confirm-delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Status message styling */
+.status-message {
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Delete button styling */
+.status-btn.delete {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.status-btn.delete:hover {
+  background-color: #c82333;
+}
+
+/* Improve alert card styling */
+.alert-card {
+  border-left: 4px solid #ccc;
+}
+
+.alert-card.active {
+  border-left-color: #dc3545;
+}
+
+.alert-card.acknowledged {
+  border-left-color: #ffc107;
+}
+
+.alert-card.resolved {
+  border-left-color: #28a745;
+}
+
+/* New styles for the enhanced admin panel */
+
+.admin-panel {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 992px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.map-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.alerts-container {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.alerts-list {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.alert-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.alert-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alert-card.active {
+  border-left: 4px solid #dc3545;
+}
+
+.alert-card.acknowledged {
+  border-left: 4px solid #fd7e14;
+}
+
+.alert-card.resolved {
+  border-left: 4px solid #28a745;
+}
+
+.alert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.alert-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.date {
+  font-size: 12px;
+  color: #666;
+}
+
+.message {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.location-details {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.distance-info {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #ccc;
+  color: #2874A6;
+}
+
+.status-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.status-label {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: auto;
+}
+
+.status-btn, .nav-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.status-btn.acknowledge {
+  background-color: #fd7e14;
+  color: white;
+}
+
+.status-btn.resolve {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-btn.delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.nav-btn.route {
+  background-color: #007bff;
+  color: white;
+}
+
+.nav-btn.route:hover {
+  background-color: #0069d9;
+}
+
+.status-btn:hover {
+  opacity: 0.9;
+}
+
+.delete-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.delete-modal {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.delete-modal h3 {
+  margin-top: 0;
+}
+
+.delete-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancel-btn {
+  padding: 8px 16px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.confirm-delete-btn {
+  padding: 8px 16px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.status-message {
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.status-message.success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.status-message.error {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
